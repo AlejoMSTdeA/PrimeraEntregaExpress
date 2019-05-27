@@ -43,6 +43,10 @@ const opciones = {
     }
 }
 
+const argv = require('yargs')
+    .command('inscribir', 'Matricula Cursos T de A', opciones)
+    .argv
+
 let cursosOfertados = () => {
     // Como se debe mostrar cada dos segundos,
     // cada setTimeout debe tener un tiempo diferente
@@ -69,26 +73,14 @@ let buscarCurso = (idCurso) => {
     });
 }
 
-const express = require('express')
-const app = express()
- 
-
+const {app} = require('./express');
 
 let crearMatricula = (nombre, cedula, idCur, nomCur, valCur, durCur) => {
-    texto = '<p>El estudiante <b>' + nombre + '</b><br>Con cedula <b>' + cedula + '</b><br>' + 'Se inscribió en el curso <b>' + idCur + '</b><br>' + nomCur + 'Con duración de <b>' + durCur + '</b><br>Con un valor de <b>$' + valCur + '</b>';
-    app.get('/', function (req, res) {
-  res.send(texto)
-  console.log('\nEl Aspirante de nombre ' + nombre + ' y cedula ' + cedula + ' se inscribió al curso ' + idCur + ', ' + nomCur + '\n')
-
-  console.log('La pre-matricula se ha creado Correctamente...');
-})
- 
-app.listen(3000)
-
+    texto = '<p>El estudiante <b>' + nombre + '</b><br>Con cedula <b>' + cedula + '</b><br>' + 'Se inscribió en el curso <b>' + idCur + ', ' + nomCur + '</b><br>Con duración de <b>' + durCur + '</b><br>Con un valor de <b>$' + valCur + '</b></p>';
+    app.listen(3000)
+    console.log('\nEl Aspirante de nombre ' + nombre + ' y cedula ' + cedula + ' se inscribió al curso ' + idCur + ', ' + nomCur + '\n')
+    console.log('La pre-matricula se ha creado Correctamente...');
 }
-const argv = require('yargs')
-    .command('inscribir', 'Matricula Cursos T de A', opciones)
-    .argv
 
 module.exports = {
     cursosOfertados,
