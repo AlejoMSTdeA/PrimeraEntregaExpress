@@ -14,7 +14,7 @@
   "author": "Alejandro Morales Sánchez alejo89.morales89@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "yargs": "^13.2.4"
   }
 }
